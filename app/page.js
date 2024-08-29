@@ -33,6 +33,7 @@ export default function Home() {
         setTitle("");
         setDescription("");
         setCompleted(false);
+        window.location.reload();
       } else {
         console.error("Failed to create todo");
       }
@@ -76,29 +77,31 @@ export default function Home() {
   };
 
   return (
-    <>
-      <div>
-        <h2>Todo List</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Description</th>
-              <th>Completed</th>
-            </tr>
-          </thead>
-          <tbody>
-            {todos.map((todo) => (
-              <tr key={todo.id}>
-                <td>{todo.id}</td>
-                <td>{todo.title}</td>
-                <td>{todo.description}</td>
-                <td>{todo.completed ? "Yes" : "No"}</td>
+    <div className="px-4">
+      <div className="">
+        <div className="flex justify-center mt-2 font-bold text-lg border-b-2 py-2  border-blue-300">
+          <h2 className="">Todo List</h2>
+        </div>
+        <div className="flex justify-center m-4 ">
+          <table className="table-fixed justify-center mt-6 border-2">
+            <thead className=" justify-center">
+              <tr className=" justify-center">
+                <th className="p-4">Title</th>
+                <th className="p-4">Description</th>
+                <th className="p-4">Completed</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className=" justify-center">
+              {todos.map((todo) => (
+                <tr key={todo.id} className="border-2">
+                  <td className="p-4">{todo.title}</td>
+                  <td className="p-4">{todo.description}</td>
+                  <td className="p-4">{todo.completed ? "Yes" : "No"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
       <form onSubmit={handleSubmit}>
         <div>
@@ -147,23 +150,9 @@ export default function Home() {
         >
           Add Todo
         </button>
-        <br />
-        <label htmlFor="completed">Id:</label>
-        <input
-          className="border rounded-md m-2 p-1"
-          type="number"
-          name="id"
-          value={id}
-          onChange={(e) => setId(e.target.value)}
-        />
-        <button
-          type="submit"
-          className="rounded-md border p-1 m-2 border-blue-300"
-          onClick={getSpecificTodo}
-        >
-          Get specific todo
-        </button>
       </form>
-    </>
+
+      <div className="flex justify-center mt-2 font-bold text-lg border-b-2 py-2  border-blue-300"></div>
+    </div>
   );
 }
