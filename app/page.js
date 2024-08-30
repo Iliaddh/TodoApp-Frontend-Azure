@@ -180,9 +180,11 @@ export default function Home() {
         </table>
       </div>
       {!showTodo && (
-        <form onSubmit={handleSubmit}>
-          <div className="">
-            <label htmlFor="title">Title:</label>
+        <form onSubmit={handleSubmit} className="mt-4">
+          <div className="flex justify-center items-center">
+            <label htmlFor="title" className="text-center">
+              Title:
+            </label>
             <input
               className="border rounded-md m-2 p-1"
               type="text"
@@ -195,7 +197,7 @@ export default function Home() {
             />
           </div>
 
-          <div>
+          <div className="flex justify-center items-center">
             <label htmlFor="description">Description:</label>
             <input
               className="border rounded-md m-2 p-1"
@@ -209,22 +211,22 @@ export default function Home() {
             />
           </div>
 
-          <button
-            type="submit"
-            className="rounded-md border p-1 m-2 border-blue-300"
-          >
-            Add Todo
-          </button>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="rounded-md border p-1 m-2 border-blue-300"
+            >
+              Add Todo
+            </button>
+          </div>
         </form>
       )}
 
       {showTodo && (
-        <tr
-          className=" border-yellow-400"
-        >
+        <tr className=" border-yellow-400">
           <td className="p-4 flex">
             {specificTodo.title}{" "}
-            <p className="ml-1 cursor-pointer" onClick={editModeHandler}>
+            <p className="ml-1 cursor-pointer" title="Edit" onClick={editModeHandler}>
               📝
             </p>
           </td>
@@ -237,15 +239,15 @@ export default function Home() {
               className="border border-red-300 p-1 rounded-md hover:bg-red-300"
               onClick={() => deleteHandler(specificTodo.id)}
             >
-              ❌
+              <p title = "Delete">❌</p>
             </button>{" "}
           </td>
         </tr>
       )}
 
       {editMode && showTodo && (
-        <form onSubmit={updateHandler} className="flex justify-center">
-          <div className="">
+        <form onSubmit={updateHandler} className="md:flex sm:block md:justify-center">
+          <div className="md:flex  md:justify-center sm:block items-center">
             <label htmlFor="title">Title:</label>
             <input
               className="border rounded-md m-2 p-1"
@@ -258,7 +260,7 @@ export default function Home() {
             />
           </div>
 
-          <div>
+          <div className="md:flex md:justify-center sm:block items-center">
             <label htmlFor="description">Description:</label>
             <input
               className="border rounded-md m-2 p-1"
@@ -271,12 +273,14 @@ export default function Home() {
             />
           </div>
 
-          <button
-            type="submit"
-            className="rounded-md border p-1 m-2 border-blue-300"
-          >
-            Update Todo
-          </button>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="rounded-md border p-1 m-2 border-blue-300"
+            >
+              Update Todo
+            </button>
+          </div>
         </form>
       )}
       <div className="flex justify-center mt-2 font-bold text-lg border-b-2 py-2  border-blue-300"></div>
